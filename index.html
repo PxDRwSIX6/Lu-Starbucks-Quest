@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Starbucks Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; background: #111; overflow: hidden; touch-action: none;
+    user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+  canvas { display: block; image-rendering: pixelated; }
+
+  /* ---------- Controlos de telemóvel: joystick + sprint ---------- */
+  #touchControls { position: fixed; inset: 0; display: none; pointer-events: none; }
+  #joyBase {
+    position: absolute; left: calc(24px + env(safe-area-inset-left)); bottom: calc(28px + env(safe-area-inset-bottom));
+    border-radius: 50%; background: rgba(0,0,0,.30); border: 3px solid rgba(255,255,255,.55);
+    pointer-events: auto; touch-action: none;
+  }
+  #joyKnob {
+    position: absolute; left: 50%; top: 50%; border-radius: 50%;
+    background: rgba(255,255,255,.80); border: 3px solid rgba(30,57,50,.85); pointer-events: none;
+  }
+  #sprintBtn {
+    position: absolute; right: calc(28px + env(safe-area-inset-right)); bottom: calc(40px + env(safe-area-inset-bottom));
+    border-radius: 50%; border: 3px solid rgba(255,255,255,.7); background: rgba(0,0,0,.35); color: #fff;
+    font-family: "Press Start 2P", monospace; font-size: 10px; padding: 0;
+    pointer-events: auto; touch-action: none;
+  }
+  #sprintBtn.active { background: #00a862; border-color: #fff; }
+
+  /* ---------- Botões da cena final ---------- */
+  #winButtons { position: fixed; left: 0; right: 0; bottom: calc(14px + env(safe-area-inset-bottom)); display: none; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  #winButtons button {
+    font-family: "Press Start 2P", monospace; font-size: 11px; padding: 12px 14px; cursor: pointer;
+    border: 3px solid #1e3932; border-radius: 10px; background: #fff; color: #1e3932;
+  }
+  #winButtons button:hover { background: #ffd6e7; }
+  #winButtons button:active { transform: scale(.96); }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="touchControls">
+  <div id="joyBase"><div id="joyKnob"></div></div>
+  <button id="sprintBtn">SPRINT</button>
+</div>
+
+<div id="winButtons">
+  <button id="btnHearts">💖 Mandar corações (E)</button>
+  <button id="btnRestart">↻ Jogar de novo (R)</button>
+</div>
+
+<script src="config.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
